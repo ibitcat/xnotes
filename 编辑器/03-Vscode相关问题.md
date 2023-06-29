@@ -2,8 +2,8 @@
 此问题出现在 `1.70.0` 版本之后，参见 [issue](https://github.com/microsoft/vscode/issues/157383)。
 
 Vscode 分为了两个版本：
-- 用户类型安装(system setup)，安装包名形如：VSCodeSetup-x64-1.75.1.exe
-- 系统类型安装(user setup)，安装包名形如：VSCodeUserSetup-x64-1.75.1.exe
+- 系统类型安装(system setup)，安装包名形如：VSCodeSetup-x64-1.75.1.exe
+- 用户类型安装(user setup)，安装包名形如：VSCodeUserSetup-x64-1.75.1.exe
 
 官网默认下载**用户类型**的安装包，如需要下载系统类型的安装包，可以进入[Updates](https://code.visualstudio.com/updates)页面选择 *System* 版本下载。
 
