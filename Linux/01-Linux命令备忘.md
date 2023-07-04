@@ -244,3 +244,12 @@ mkdir -p aaa && wget https://github.com/antirez/sds/archive/refs/tags/2.0.0.tar.
 
     rm aaa
     ```
+
+## 查看文件的指定行
+```bash
+# 查看 5至10行的内容
+sed -n "5,10p" xxx.log
+
+# 查看第 5 行的内容
+sed -n "5,5p" xxx.log
+```
