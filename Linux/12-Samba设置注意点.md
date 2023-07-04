@@ -66,7 +66,7 @@ Windows Registry Editor Version 5.00
 
 >为什么要用 windows 记事本编辑？因为记事本的默认编码是ANSI，在简体中文Windows操作系统中，ANSI 编码代表 GBK 编码。当然也可以使用其他编辑器，只要选择正确编码格式即可。
 
-## 支持软连接
+## 支持软连接访问
 默认情况下，windows 上是无法访问 samba 服务器上软连接，可以通过修改 samba 配置来支持软连接访问。
 
 编辑 `/etc/samba/smb.conf` 配置文件，在 `[global]` 节加上以下内容：
