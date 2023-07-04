@@ -9,7 +9,7 @@
 - 写一点
 - 再写一点
 
-[GitHub](https://github.com/domixcat/xnotes/)
+[GitHub](https://github.com/bitvcat/xnotes/)
 [开始阅读](/README.md)
 
 ![color](#ffffff)
