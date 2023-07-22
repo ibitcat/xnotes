@@ -63,6 +63,16 @@ grep -oP '.*(?<=aaa)' test.log
 grep -oP '(?<=\=)(.+?)(?=@\d+\.com)'
 # 输出：aaa
 ```
+
+更多示例：
+```
+# test.log 内容如下
+# op=send,cmd=xxx,args={"id":1,"name":"cat"},response=false
+# op=call,cmd=xxx,args={"id":1,"name":"cat"},response=false
+# 取出日志中 args 的 json
+grep -oP '(?<=args=)(.*)(?=,response)' test.log
+```
+
 >小知识点，perl 默认使用贪婪匹配(greedy match)，若要使用懒惰匹配(lazy match)，则在 *，+，？等表示匹配次数的后面加上？就表示以懒惰模式进行匹配。
 
 参考：
