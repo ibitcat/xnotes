@@ -65,7 +65,7 @@ systemd = true
 ```
 注意，systemd 需要 wsl2，且wsl版本要为 0.67.6 或以上。
 
-## 修复无法运行Windows可执行程序
+## 无法运行Windows可执行程序
 在 wsl2 执行 `code .` 时无法正确打开 vscode，并报以下错误：
 ```
 cannot execute binary file: Exec format error
