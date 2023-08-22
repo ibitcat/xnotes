@@ -64,3 +64,54 @@ Initializing plocate database; this may take some time...
 systemd = true
 ```
 注意，systemd 需要 wsl2，且wsl版本要为 0.67.6 或以上。
+
+## 修复无法运行Windows可执行程序
+在 wsl2 执行 `code .` 时无法正确打开 vscode，并报以下错误：
+```
+cannot execute binary file: Exec format error
+```
+之前能够执行的windows exe 都报同样的错误，例如: `tasklist.exe`，`win32yank.exe`。
+
+解决方法如下：
+1. 创建 binformat 配置文件
+    ```
+    sudo vim /usr/lib/binfmt.d/WSLInterop.conf
+    ```
+    添加以下内容：
+    ```
+    :WSLInterop:M::MZ::/init:PF
+    ```
+2. 重启 systemd-binfmt 服务
+    ```
+    sudo systemctl restart systemd-binfmt
+    sudo systemctl status systemd-binfmt
+    ```
+
+3. 安装 binfmt-support
+    若上面的步骤重启失败，则安装 binfmt-support，然后再次重启服务。
+    ```
+    sudo apt update
+    sudo apt install binfmt-support
+    ```
+
+4. 检查最终配置
+    ```
+    sudo ls -Fal /proc/sys/fs/binfmt_misc
+    total 0
+    drwxr-xr-x 2 root root 0 Aug 22 17:49 ./
+    dr-xr-xr-x 1 root root 0 Aug 22 17:49 ../
+    -rw-r--r-- 1 root root 0 Aug 22 17:51 WSLInterop
+    -rw-r--r-- 1 root root 0 Aug 22 17:51 python3.10
+    --w------- 1 root root 0 Aug 22 17:51 register
+    -rw-r--r-- 1 root root 0 Aug 22 17:51 status
+
+    sudo cat /proc/sys/fs/binfmt_misc/WSLInterop
+    enabled
+    interpreter /init
+    flags: PF
+    offset 0
+    magic 4d5a
+    ```
+    若显示上面的内容，则表示修复成功。
+
+参考：[WSL2 Error: "cannot execute binary file: Exec format error"](https://www.reddit.com/r/bashonubuntuonwindows/comments/11vx61n/comment/jdh2ovy/?utm_source=share&utm_medium=web2x&context=3)
