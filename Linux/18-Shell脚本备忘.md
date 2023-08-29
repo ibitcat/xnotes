@@ -64,11 +64,15 @@ fi
 
 ## 字符串表达式
 字符串允许使用赋值号做等号。
-- `if  [ $a = $b ] `，如果string1等于string2，则为真
-- `if  [ $string1 !=  $string2 ]`，如果string1不等于string2，则为真
-- `if  [ -n $string  ]`，如果string 非空(非0），返回0(true)
-- `if  [ -z $string  ]`，如果string 为空，则为真
-- `if  [ $sting ]`，如果string 非空，返回0 (和-n类似)
+- `if  [ "$a" = "$b" ] `，如果string1等于string2，则为真
+- `if  [ "$string1" !=  "$string2" ]`，如果string1不等于string2，则为真
+- `if  [ -n "$string"  ]`，如果string 非空字符串(非0），返回0(true)
+- `if  [ -z "$string"  ]`，如果string 为空字符串，则为真
+- `if  [ "$string" ]`，如果string 非空，返回0 (和-n类似)
+
+**注意：**单对中括号和双对中括号的区别是：单对中括号变量必须加双引号，而双对中括号不需要。
+- `[ -n "$string"] `，变量要加双引号
+- `[[ -n $string ]]`, 变量不需要加双引号
 
 ## 数值表达式
 ```
