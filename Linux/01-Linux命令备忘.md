@@ -263,3 +263,15 @@ sed -n "5,10p" xxx.log
 # 查看第 5 行的内容
 sed -n "5,5p" xxx.log
 ```
+
+## 显示隐藏文件夹大小
+```bash
+# 查看data文件夹大小
+du -sh /data
+
+# 查看data文件夹下文件或子目录大小
+du -sh /data/*
+
+# 查看隐藏文件夹的大小
+du -sh /data/.[^.]*
+```
