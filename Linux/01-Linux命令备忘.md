@@ -180,19 +180,6 @@ ls | xargs -I {} grep -Hn "cluster_ip" {}/config/skynet.config
 | `2>&1 >/dev/null` | 丢弃     | 屏幕     |
 
 
-## jq 对keys和values的排序处理
-jq 1.3 与 之后的版本对排序的处理不同。
-参考:[jq sorts KEY and VALUES in different way - how can I enumerate them in the same order?](https://stackoverflow.com/a/42324565)
-
-```
-# 使用的jq版本为1.6
-# keys 按字母顺序排序
-echo '{"a":1, "c":3, "b":2}' |jq "keys[]"
-
-# keys 按输入顺序排序
-echo '{"a":1, "c":3, "b":2}' |jq "keys_unsorted[]"
-```
-
 ## 一键下载并解压
 ```bash
 # 使用 wget 下载并解压
