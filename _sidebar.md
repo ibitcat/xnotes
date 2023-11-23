@@ -25,7 +25,7 @@
   - [01 - 批处理备忘](Windows/01-批处理备忘.md)
   - [02 - ShellIcon不显示问题](Windows/02-ShellIcon不显示问题.md)
   - [03 - Windows开启ssh服务](Windows/03-Windows开启ssh服务.md)
-  - [04 - 远程桌面能认证但无法进入桌面.md](Windows/04-远程桌面能认证但无法进入桌面.md.md)
+  - [04 - 远程桌面能认证但无法进入桌面](Windows/04-远程桌面能认证但无法进入桌面.md)
 
 - WSL
   - [01 - WSL疑难杂症](WSL/01-WSL疑难杂症.md)
