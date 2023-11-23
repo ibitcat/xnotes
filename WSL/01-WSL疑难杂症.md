@@ -57,6 +57,25 @@ Initializing plocate database; this may take some time...
 ## 桥接网络并固定IP
 1.0 以上版本的 wsl2 已经解决了网络问题，可以参考 [WSL2使用桥接网络，并指定IP](https://www.cnblogs.com/lic0914/p/17003251.html) 进行配置，亲测可行。
 
+**2023-11-23 更新**:
+最新版本 `WSL 版本： 2.0.9.0` 已经可以不用采用上面的桥接方式，直接修改 `%userprofile%/.wslconfig` 配置即可使 wsl2 的 ip 和宿主机的ip 相同，配置如下：
+```
+[wsl2]
+dhcp=false
+ipv6=true
+debugConsole=true           #可设置为false
+
+[experimental]
+autoMemoryReclaim=gradual 	# 开启自动回收内存，可在 gradual, dropcache, disabled 之间选择
+networkingMode=mirrored 	# 开启镜像网络
+dnsTunneling=true 		# 开启 DNS Tunneling
+firewall=true 			# 开启 Windows 防火墙
+autoProxy=true 			# 开启自动同步代理
+sparseVhd=true 			# 开启自动释放 WSL2 虚拟硬盘空间
+```
+
+修改完后，`wsl --shutdown` 关闭后在重开 wsl 即可生效。
+
 ## WSL2开启systemd
 在 wsl2 的 `/etc/wsl.conf` 文件中(没有就新建一个)添加以下配置：
 ```
