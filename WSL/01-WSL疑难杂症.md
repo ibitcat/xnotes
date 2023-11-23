@@ -76,6 +76,8 @@ sparseVhd=true 			# 开启自动释放 WSL2 虚拟硬盘空间
 
 修改完后，`wsl --shutdown` 关闭后在重开 wsl 即可生效。
 
+参考：[WSL 中的高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
+
 ## WSL2开启systemd
 在 wsl2 的 `/etc/wsl.conf` 文件中(没有就新建一个)添加以下配置：
 ```
