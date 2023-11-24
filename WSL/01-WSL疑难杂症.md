@@ -63,7 +63,7 @@ Initializing plocate database; this may take some time...
 [wsl2]
 dhcp=false
 ipv6=true
-debugConsole=true           #可设置为false
+debugConsole=false           #
 
 [experimental]
 autoMemoryReclaim=gradual 	# 开启自动回收内存，可在 gradual, dropcache, disabled 之间选择
@@ -74,6 +74,7 @@ autoProxy=true 			# 开启自动同步代理
 sparseVhd=true 			# 开启自动释放 WSL2 虚拟硬盘空间
 ```
 
+上面的 `debugConsole` 最好设置为 false，否则会在打开资源管理器时自动弹出, 参考这个 [issus](https://github.com/microsoft/WSL/issues/10621)。
 修改完后，`wsl --shutdown` 关闭后在重开 wsl 即可生效。
 
 参考：[WSL 中的高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
