@@ -267,4 +267,4 @@ du -sh /data/.[^.]*
 例如把按日期目录划分的照片统一移动到一个文件夹 photos 下：
 ```bash
 find ./ -type f -exec mv {} ../photos/ \;
-``
+```
