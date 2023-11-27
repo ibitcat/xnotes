@@ -39,6 +39,8 @@
   - [05 - Git清空commit记录](Git/05-Git清空commit记录.md)
   - [06 - Git仓库单独设置用户名和密码](Git/06-Git仓库单独设置用户名和密码.md)
   - [07 - Git显示所有分支的log](Git/07-Git显示所有分支的log.md)
+  - [08 - Git减少auto meger](Git/08-Git减少auto%20meger.md)
+  - [09 - Git小知识点合集](Git/09-Git小知识点合集.md)
 
 - 编辑器
   - [01 - Vim字符串替换](编辑器/01-Vim字符串替换.md)
