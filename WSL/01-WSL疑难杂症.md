@@ -78,7 +78,10 @@ hostAddressLoopback = true  # 允许windows和wsl相互连接(一定要设置)
 上面的 `debugConsole` 最好设置为 false，否则会在打开资源管理器时自动弹出, 参考这个 [issus](https://github.com/microsoft/WSL/issues/10621)。
 修改完后，`wsl --shutdown` 关闭后在重开 wsl 即可生效。
 
-参考：[WSL 中的高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
+参考：
+- [WSL 中的高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
+- [Networking mirrored can't work on WSL2](https://github.com/microsoft/WSL/issues/10632)
+- [Can't ssh into wsl with networking mode mirrored](https://github.com/microsoft/WSL/issues/10597)
 
 ## WSL2开启systemd
 在 wsl2 的 `/etc/wsl.conf` 文件中(没有就新建一个)添加以下配置：
