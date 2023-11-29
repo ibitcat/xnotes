@@ -4,7 +4,7 @@
 git submodule add -f 子模块git仓库地址 子模块路径
 
 # 示例：
-git submodule add -f https://github.com/cloudwu/skynet.git skynet
+git submodule add -f -b main https://github.com/cloudwu/skynet.git skynet
 git submodule add -f https://github.com/starwing/lua-protobuf.git 3rd/lua-protobuf
 ```
 
