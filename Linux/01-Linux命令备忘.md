@@ -268,3 +268,20 @@ du -sh /data/.[^.]*
 ```bash
 find ./ -type f -exec mv {} ../photos/ \;
 ```
+
+## 查看GLIBC版本
+```bash
+# 方法1
+ldd --version
+
+# 方法2，执行库文件（具体看库文件路径在哪）
+# ubuntu 库路径: /lib/x86_64-linux-gnu/libc.so.6
+# centos 库路径：/lib64/libc.so.6
+/lib64/libc.so.6
+
+# 方法3，查看软链接
+ls -l /lib64/libc.so.*
+
+# 方法4，查看库文件
+strings /lib64/libc.so.6 |grep -E "^GLIBC_"
+```
