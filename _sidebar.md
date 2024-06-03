@@ -20,14 +20,14 @@
   - [19 - Ubuntu之apt代理设置](Linux/19-Ubuntu之apt代理设置.md)
   - [20 - 服务Operation not permitted故障排除](Linux/20-%E6%9C%8D%E5%8A%A1Operation%20not%20permitted%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.md)
   - [21 - Jq命令备忘](Linux/21-Jq命令备忘.md)
-  - [22-Linux终端彩色输出](Linux/22-Linux终端彩色输出.md)
+  - [22 - Linux终端彩色输出](Linux/22-Linux终端彩色输出.md)
 
 - Windows
   - [01 - 批处理备忘](Windows/01-批处理备忘.md)
   - [02 - ShellIcon不显示问题](Windows/02-ShellIcon不显示问题.md)
   - [03 - Windows开启ssh服务](Windows/03-Windows开启ssh服务.md)
   - [04 - 远程桌面能认证但无法进入桌面](Windows/04-远程桌面能认证但无法进入桌面.md)
-  - [05-Windows终端彩色输出](Windows/05-Windows终端彩色输出.md)
+  - [05 - Windows终端彩色输出](Windows/05-Windows终端彩色输出.md)
 
 - WSL
   - [01 - WSL疑难杂症](WSL/01-WSL疑难杂症.md)
