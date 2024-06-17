@@ -80,3 +80,10 @@ git push origin beta
 grep -w "merge=ours" .gitattributes | awk '{print $1}' | xargs -I {} git checkout beta -- {}
 git commit -a -m "merge develop into beta"
 ```
+
+## 检查本地分支是否存在
+```bash
+if ! git show-ref -q --verify -- "refs/heads/$branch"; then
+    echo "branch $branch does not exist"
+fi
+```
