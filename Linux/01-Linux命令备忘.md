@@ -285,3 +285,8 @@ ls -l /lib64/libc.so.*
 # 方法4，查看库文件
 strings /lib64/libc.so.6 |grep -E "^GLIBC_"
 ```
+
+## 查看打开的文件
+- `lsof -p pid`，列出该进程打开的所有文件
+- `lsof -p pid | wc -l`，查看该进程打开的文件数
+- `lsof $filename`，列出打开该文件的进程信息
