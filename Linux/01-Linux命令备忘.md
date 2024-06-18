@@ -287,6 +287,8 @@ strings /lib64/libc.so.6 |grep -E "^GLIBC_"
 ```
 
 ## 查看打开的文件
-- `lsof -p pid`，列出该进程打开的所有文件
-- `lsof -p pid | wc -l`，查看该进程打开的文件数
+- `lsof -p <进程id>`，列出该进程打开的所有文件
+- `lsof -p <进程id> | wc -l`，查看该进程打开的文件数
 - `lsof $filename`，列出打开该文件的进程信息
+
+也可以直接用 `ls /proc/<进程id>/fd |wc -l` 来查看进程打开的文件数，还可以通过 `cat /proc/<进程id>/limits` 来查看进程ulimit相关信息。
