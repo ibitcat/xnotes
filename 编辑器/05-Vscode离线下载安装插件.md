@@ -41,6 +41,7 @@ fi
 changeVsixs=""
 urlPrefix="https://marketplace.visualstudio.com/_apis/public/gallery/publishers"
 
+# 参考：https://zhuanlan.zhihu.com/p/671350292
 shopt -s lastpipe
 cat ${extensions} | jq -c '.[]' | while read -r item; do
     #echo "$item"
