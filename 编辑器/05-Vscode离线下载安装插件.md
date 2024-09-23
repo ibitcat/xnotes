@@ -79,7 +79,8 @@ done
 
 #echo "changeVsixs = ${changeVsixs}"
 if [ -n "$changeVsixs" ]; then
-    tar -cvf vsixs.tar ${changeVsixs}
+    datetime=$(date +"%Y%m%d%H%M%S")
+    tar -cvf vsixs-${datetime}.tar ${changeVsixs}
 fi
 ```
 
