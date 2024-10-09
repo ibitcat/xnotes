@@ -20,9 +20,10 @@
     -   [18 - Shell 脚本备忘](Linux/18-Shell脚本备忘.md)
     -   [19 - Ubuntu 之 apt 代理设置](Linux/19-Ubuntu之apt代理设置.md)
     -   [20 - 服务 Operation not permitted 故障排除](Linux/20-%E6%9C%8D%E5%8A%A1Operation%20not%20permitted%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.md)
-    -   [21 - Jq 命令备忘](Linux/21-Jq命令备忘.md)
+    -   [21 - Jq 实战用例](Linux/21-Jq实战用例.md)
     -   [22 - Linux 终端彩色输出](Linux/22-Linux终端彩色输出.md)
     -   [23 - Linux 内核参数](Linux/23-Linux内核参数.md)
+    -   [24 - Grep 实战用例](Linux/24-Grep实战用例.md)
 
 -   Windows
 
