@@ -50,6 +50,7 @@
     -   [08 - Git 减少 auto meger](Git/08-Git减少auto%20meger.md)
     -   [09 - Git 小知识点合集](Git/09-Git小知识点合集.md)
     -   [10 - 一个 Git 合并的快捷脚本](Git/10-一个Git合并的快捷脚本.md)
+    -   [11 - 同步 fock 的项目并保留自己的修改](Git/11-同步fock的项目并保留自己的修改.md)
 
 -   编辑器
 
