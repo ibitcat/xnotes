@@ -33,3 +33,5 @@ https://marketplace.visualstudio.com/_apis/public/gallery/publishers/sumneko/vse
         url = https://用户名:密码@github.com/xxx/xxx.git
         fetch = +refs/heads/*:refs/remotes/origin/*
 ```
+
+如果仓库中还有子模块，则也需要同步修改子模块的 url 地址，子模块的 git 配置路径为：`.git/modules/子模块名/config`，如果子模块也有自己的子模块，则以此类推。
