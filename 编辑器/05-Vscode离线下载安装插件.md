@@ -47,7 +47,7 @@ versionInfo=$(code --version)
 binVer=$(echo $versionInfo | awk '{print $1}')
 binHash=$(echo $versionInfo | awk '{print $2}')
 binPlat=$(echo $versionInfo | awk '{print $3}')
-binName="VSCodeUserSetup-${binPlat}-${binVer}.exe"
+binName="VSCodeSetup-${binPlat}-${binVer}.exe"
 binUrl="https://vscode.download.prss.microsoft.com/dbazure/download/stable/${binHash}/${binName}"
 echo "${binUrl}"
 
