@@ -41,7 +41,23 @@ fi
 changeVsixs=""
 urlPrefix="https://marketplace.visualstudio.com/_apis/public/gallery/publishers"
 
-# 参考：https://zhuanlan.zhihu.com/p/671350292
+echo ""
+echo "开始下载安装包..."
+versionInfo=$(code --version)
+binVer=$(echo $versionInfo | awk '{print $1}')
+binHash=$(echo $versionInfo | awk '{print $2}')
+binPlat=$(echo $versionInfo | awk '{print $3}')
+binName="VSCodeUserSetup-${binPlat}-${binVer}.exe"
+binUrl="https://vscode.download.prss.microsoft.com/dbazure/download/stable/${binHash}/${binName}"
+echo "${binUrl}"
+
+if [ ! -f "${download}/${binName}" ]; then
+    wget -P ${download} -q --show-progress --progress=bar:force::noscroll ${binUrl}
+    changeVsixs="${changeVsixs} ${download}/${binName}"
+fi
+
+echo ""
+echo "开始下载插件..."
 shopt -s lastpipe
 cat ${extensions} | jq -c '.[]' | while read -r item; do
     #echo "$item"
@@ -50,6 +66,7 @@ cat ${extensions} | jq -c '.[]' | while read -r item; do
     exname=$(echo ${id} | awk -F. '{print $2}')
     version=$(echo $item | jq -r '.version')
     platform=$(echo $item | jq -r '.metadata.targetPlatform')
+    echo "$id"
 
     vsix="${id}-${version}@${platform}.vsix"
     url="${urlPrefix}/${author}/vsextensions/${exname}/${version}/vspackage?targetPlatform=${platform}"
@@ -78,10 +95,13 @@ done
 #done < <(cat ${extensions} | jq -c '.[]')
 
 #echo "changeVsixs = ${changeVsixs}"
+echo ""
+echo "开始打包..."
 if [ -n "$changeVsixs" ]; then
     datetime=$(date +"%Y%m%d%H%M%S")
     tar -cvf vsixs-${datetime}.tar ${changeVsixs}
 fi
+
 ```
 
 运行示例：
