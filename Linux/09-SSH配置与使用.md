@@ -79,3 +79,5 @@ PasswordAuthentication yes
 ```bash
 ssh-keygen -F <hostname_or_ip> -f ~/.ssh/known_hosts
 ```
+
+参考: [SSH known_hosts 显示 IP 地址](https://zdyxry.github.io/2019/12/06/SSH-known_hosts-%E6%98%BE%E7%A4%BA-IP-%E5%9C%B0%E5%9D%80/)。
