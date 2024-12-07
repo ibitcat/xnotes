@@ -269,3 +269,10 @@ strings /lib64/libc.so.6 |grep -E "^GLIBC_"
 -   `lsof $filename`，列出打开该文件的进程信息
 
 也可以直接用 `ls /proc/<进程id>/fd |wc -l` 来查看进程打开的文件数，还可以通过 `cat /proc/<进程id>/limits` 来查看进程 ulimit 相关信息。
+
+## 字符串分割
+
+使用 `:` 分割字符串，并提取第 2 列到最后一列，可以使用以下方法：
+
+-   `echo "a:b:c:d:e" | cut -d':' -f2-`，cut 还支持任意列的拼接，如 `-f2-4`，`-f2,5`
+-   `echo "a:b:c:d:e" | sed 's/^[^:]*://'`
