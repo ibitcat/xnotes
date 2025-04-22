@@ -4,6 +4,7 @@
     - [小林coding](https://xiaolincoding.com/ )
     - [C语言中文网](http://c.biancheng.net/)
     - [Red Blob Games](https://www.redblobgames.com/)
+    - [代码随想录](https://www.programmercarl.com/)
 
 - 🔨工具网站
     - [desmos图形计算器](https://www.desmos.com/?lang=zh-CN)
