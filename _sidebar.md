@@ -59,6 +59,7 @@
     -   [03 - Vscode 相关问题](编辑器/03-Vscode相关问题.md)
     -   [04 - 离线安装 vscode-server](编辑器/04-离线安装vscode-server.md)
     -   [05 - Vscode 离线下载安装插件](编辑器/05-Vscode离线下载安装插件.md)
+    -   [06 - Tmux 相关问题](编辑器/06-Tmux相关问题.md)
 
 -   C&C++
 
@@ -75,6 +76,7 @@
 -   数据库
 
     -   [01 - Mysql 密码验证策略修改](数据库/01-Mysql密码验证策略修改.md)
+    -   [02 - Mongo 操作示例合集](数据库/02-Mongo操作示例合集.md)
 
 -   工具类
 
