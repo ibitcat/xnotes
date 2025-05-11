@@ -71,7 +71,8 @@ for ((i=0;i<nodelen;i++)); do
 done
 ```
 
-在 tmux 中，每个窗格的标识符格式为：<session_name>:<window>.<pane> 例如 dev:1.1 表示会话 dev 的第 1 个窗口的第 1 个窗格。
+在 tmux 中，每个窗格的标识符格式为：`<session_name>:<window>.<pane>`。例如 `dev:1.1` 表示会话 dev 的第 1 个窗口的第 1 个窗格。
+
 可以用 `tmux list-pane -a` 列出所在窗格。例如：
 
 ```
