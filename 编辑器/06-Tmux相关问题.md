@@ -38,37 +38,106 @@ tmux_conf_theme_right_separator_sub='\uE0B3'
 5. 让每个窗口的第二个窗格作为活动窗格；
 
 ```bash
-echo "create center window ..."
-# 创建一个名为 s1 的session(会话)，并自动创建第一个window(窗口)
-# -P 参数返回会话、窗口、窗格的信息
-tmux new -s s1 -n center -d -P
-tmux split-window -h -t s1:1 -d -P
+#!/bin/bash
 
-nodes=("center" "game" "login")
-nodelen=${#nodes[@]}
-for ((i=1;i<nodelen;i++)); do
-    echo "create ${nodes[$i]} window ..."
-    tmux new-window -t s1 -n ${nodes[$i]} -d -P
-    tmux split-window -h -t s1:$((i+1)) -d -P
-    sleep 0.3
-    echo ""
-done
+# 安装 oh my tmux
+function installTmuxrc() {
+    if [ $# -ge 1 ]; then
+        echo "通过 zip 文件安装"
+        if command -v zip >/dev/null 2>&1; then
+            echo "zip installed"
+        else
+            echo "zip not install"
+            exit 1
+        fi
 
-#tmux send-keys -t s1 'sh server.sh start center' Enter
-for ((i=0;i<nodelen;i++)); do
-    echo "start ${nodes[$i]} ..."
-    stopcmd="sh server.sh stop ${nodes[$i]}"
-    echo $stopcmd
-    tmux send-keys -t s1:$((i+1)).1 "$stopcmd" Enter
+        if [ ! -f "$1" ]; then
+            echo "file not exist"
+            exit 1
+        fi
 
-    startcmd="sh server.sh start ${nodes[$i]}; tail -f /data/log/server_${nodes[$i]}/skynet-$(date +"%Y-%m-%d").log"
-    echo $startcmd
-    tmux send-keys -t s1:$((i+1)).1 "$startcmd" Enter
-    sleep 0.3
+        echo "解压zip..."
+        unzip $1 -d ~
+        mv ~/.tmux-master ~/.tmux
+        ln -s -f .tmux/.tmux.conf
+        cp .tmux/.tmux.conf.local .
+    else
+        echo "从github clone 安装"
 
-    tmux select-pane -t s1:$((i+1)).2
-    echo ""
-done
+        cd ~
+        git clone --single-branch https://github.com/gpakosz/.tmux.git
+        ln -s -f .tmux/.tmux.conf
+        cp .tmux/.tmux.conf.local .
+    fi
+
+    echo "修改 .tmux.conf.local"
+    sed -i '/^#set -g history-limit 10000/s/^#//' ~/.tmux.conf.local
+    sed -i '/^#set -g mouse on/s/^#//' ~/.tmux.conf.local
+    sed -i '/^#set -g status-keys vi/s/^#//' ~/.tmux.conf.local
+    sed -i '/^#set -g mode-keys vi/s/^#//' ~/.tmux.conf.local
+    powerline=$(cat << EOF
+tmux_conf_theme_left_separator_main='\uE0B0'
+tmux_conf_theme_left_separator_sub='\uE0B1'
+tmux_conf_theme_right_separator_main='\uE0B2'
+tmux_conf_theme_right_separator_sub='\uE0B3'
+EOF
+)
+    echo "$powerline" >> ~/.tmux.conf.local
+}
+
+# 启动 tmux
+function startTmux() {
+    echo "create center window ..."
+    # 创建一个名为 s1 的session(会话)，并自动创建第一个window(窗口)
+    # -P 参数返回会话、窗口、窗格的信息
+    tmux new -s s1 -n center -d -P
+    tmux split-window -h -t s1:1 -d -P
+
+    nodes=("center" "game" "login")
+    nodelen=${#nodes[@]}
+    for ((i=1;i<nodelen;i++)); do
+        echo "create ${nodes[$i]} window ..."
+        tmux new-window -t s1 -n ${nodes[$i]} -d -P
+        tmux split-window -h -t s1:$((i+1)) -d -P
+        sleep 0.3
+        echo ""
+    done
+
+    #tmux send-keys -t s1 'sh server.sh start center' Enter
+    for ((i=0;i<nodelen;i++)); do
+        echo "start ${nodes[$i]} ..."
+        stopcmd="sh server.sh stop ${nodes[$i]}"
+        echo $stopcmd
+        tmux send-keys -t s1:$((i+1)).1 "$stopcmd" Enter
+
+        startcmd="sh server.sh start ${nodes[$i]}; tail -f /data/log/server_${nodes[$i]}/skynet-$(date +"%Y-%m-%d").log"
+        echo $startcmd
+        tmux send-keys -t s1:$((i+1)).1 "$startcmd" Enter
+        sleep 0.3
+
+        tmux select-pane -t s1:$((i+1)).2
+        echo ""
+    done
+}
+
+OP=$1
+case "OP" in
+    # install
+    install)
+    installTmuxrc $*
+    ;;
+
+    # start
+    start)
+    startTmux $*
+    ;;
+
+    # invalid
+    *)
+    echo "invaild command"
+    ;;
+esac
+
 ```
 
 在 tmux 中，每个窗格的标识符格式为：`<session_name>:<window>.<pane>`。例如 `dev:1.1` 表示会话 dev 的第 1 个窗口的第 1 个窗格。
