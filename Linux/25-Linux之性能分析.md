@@ -55,11 +55,9 @@ sudo apt install linux-tools-generic
 
 **注意：** wsl2 上安装 perf 会比较麻烦，因为 perf 工具与内核版本强绑定，因此需要自己编译：
 
-1. 先安装上面的包，然后运行 perf -v
+1. 先安装上面的包，然后运行 `perf -v`
 
-````bash
-perf -v
-
+```bash
 # 会有以下输出
 WARNING: perf not found for kernel 6.6.87.2-microsoft
 
@@ -70,12 +68,13 @@ WARNING: perf not found for kernel 6.6.87.2-microsoft
   You may also want to install one of the following packages to keep up to date:
     linux-tools-standard-WSL2
     linux-cloud-tools-standard-WSL2
+```
 
 2. 下载指定版本的内核代码
 
 ```bash
 git clone https://github.com/microsoft/WSL2-Linux-Kernel --depth 1 -b linux-msft-wsl-6.6.87.2
-````
+```
 
 3. 编译 perf
 
