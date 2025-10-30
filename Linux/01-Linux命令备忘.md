@@ -276,3 +276,17 @@ strings /lib64/libc.so.6 |grep -E "^GLIBC_"
 
 -   `echo "a:b:c:d:e" | cut -d':' -f2-`，cut 还支持任意列的拼接，如 `-f2-4`，`-f2,5`
 -   `echo "a:b:c:d:e" | sed 's/^[^:]*://'`
+
+## 开启 coredump
+
+以下是永久开启:
+
+```bash
+sudo vim /etc/security/limits.conf
+
+# 在文件后面添加
+soft core unlimited
+hard core unlimited
+
+# 然后重启
+```

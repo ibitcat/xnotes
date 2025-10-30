@@ -24,6 +24,7 @@
     -   [22 - Linux 终端彩色输出](Linux/22-Linux终端彩色输出.md)
     -   [23 - Linux 内核参数](Linux/23-Linux内核参数.md)
     -   [24 - Grep 实战用例](Linux/24-Grep实战用例.md)
+    -   [25 - Linux 之性能分析](Linux/25-Linux之性能分析.md)
 
 -   Windows
 
