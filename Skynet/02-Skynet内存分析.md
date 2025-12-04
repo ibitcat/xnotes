@@ -123,6 +123,19 @@ stats.retained     18214912     17.37 Mb
 -   内部碎片率 = (stats.active - stats.allocated) / stats.allocated，基准值为 10%。
 -   外部碎片率 = (stats.resident - stats.active) / stats.active
 
+## jemalloc 内存分配机制
+
+-   jemalloc 使用多个 arena 避免锁竞争
+-   每个 arena 管理多个 extent (内存区域)
+-   extent 包含多个 page，page 包含多个对象
+-   释放对象后，page 可能变成 dirty/muzzy 状态，但不立即归还系统
+
+**Decay 机制**：对象释放 → dirty page → (dirty_decay_ms) → muzzy page → (muzzy_decay_ms) → 归还系统。
+
+-   `dirty page`：最近释放，内容未清零，可快速重用
+-   `muzzy page`：较久未用，内容已失效，但仍在进程地址空间
+-   `decay 时间`：控制从释放到归还系统的延迟
+
 ## jemalloc 调优
 
 jemalloc 可以通过设置 MALLOC_CONF 环境变量来进行调优，常用的参数有：
@@ -132,9 +145,9 @@ jemalloc 可以通过设置 MALLOC_CONF 环境变量来进行调优，常用的�
 export MALLOC_CONF="background_thread:true,dirty_decay_ms:1000,muzzy_decay_ms:1000"
 ```
 
--   background_thread:true：启用后台线程来异步回收内存，可以减少主线程的内存回收开销。
--   dirty_decay_ms:1000：设置脏页的衰减时间为 1000 毫秒，表示 jemalloc 会在后台线程中每隔 1 秒钟回收一次脏页。
--   muzzy_decay_ms:1000：设置 muzzy 页的衰减时间为 1000 毫秒，表示 jemalloc 会在后台线程中每隔 1 秒钟回收一次 muzzy 页。
+-   `background_thread:true`：启用后台线程来异步回收内存，可以减少主线程的内存回收开销。
+-   `dirty_decay_ms:1000`：设置脏页的衰减时间为 1000 毫秒，表示 jemalloc 会在后台线程中每隔 1 秒钟回收一次脏页。
+-   `muzzy_decay_ms:1000`：设置 muzzy 页的衰减时间为 1000 毫秒，表示 jemalloc 会在后台线程中每隔 1 秒钟回收一次 muzzy 页。
 
 ## 内存碎片
 
